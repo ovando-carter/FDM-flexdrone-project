@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Order Confirmation</title>
+    </head>
+
+<body>
+    <h1>First Name: {{fn}}</h1>
+    <h1>Last Name: {{ln}}</h1>
+    <h1>Drone Ordered: {{dn}}</h1>
+    {% if cn1 %}
+        <h1>Camera: {{cn1}}</h1>
+    {% endif %}
+    {% if cn2 %}
+        <h1>Landing Gear:{{cn2}}</h1>
+    {% endif %}
+    {% if cn3 %}
+        <h1>Blades: {{cn3}}</h1>
+    {% endif %}
+    <h1>Delivery Address Line 1: {{ad1}}</h1>
+    {% if ad2 %}
+        <h1>Delivery Address Line 2: {{ad2}}</h1>
+    {% endif %}
+    {% if town %}
+        <h1>Delivery Town: {{town}}</h1>
+    {% endif %}
+    <h1>Delivery City: {{city}}</h1>
+    <h1>Delivery Country: {{country}}</h1>
+    <h1>Delivery Postcode: {{pc}}</h1>
+
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flex Drone</title>
+  <!--<link rel="stylesheet" type="text/css" href="resources/css/reset.css">-->
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/flexdrone-home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename= 'css/check_box.css') }}">
+</head>
+
+<body>
+
+  <div class="body">
+    <!-- sidebar -->
+    <div class="week">
+      <div class="secondary-background">
+        <div class="task sidebarSearch">
+          <input type="text" name="search" id="search">
+          <label for="search">
+            <h3> Search</h3>
+          </label>
+        </div>
+        <div class="task sidebarLogin">
+          {% if not current_user.is_authenticated %}
+            <div class="button">
+              <a href="{{ url_for('user_signup') }}">Sign up</a>
+              <a href="{{ url_for('user_login') }}">Log in</a>
+            </div>
+          {% endif %}
+          {% if current_user.is_authenticated %}
+            <div class="button">
+              <a href="{{ url_for('my_account') }}">My account</a>
+              <a href="{{ url_for('user_logout') }}">Log out</a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="task sidebar">
+          <form id="Drones">
+
+            <select name="Products" id="Products">
+              <option value="http://127.0.0.1:5000/flexdrone_drone/1">Roflcopter</option>
+              <option value="http://127.0.0.1:5000/flexdrone_drone/2">DJI Flight Master</option>
+              <option value="http://127.0.0.1:5000/flexdrone_drone/3">Defender Drone</option>
+            </select>
+            
+            <button class="btn" type="button" onclick="redirect()">Select Product</button>
+            
+          </form>
+        </div>
+        <div class="task sidebar">
+          <form id="make_custom_design_checkbox">
+
+            <select name="Custom design">
+                <option value="Selection 1">Selection 1</option>
+                <option value="Selection 2">Selection 2</option>
+                <option value="Selection 3">Selection 3</option>
+            </select>
+              
+            <input type="submit" />
+              
+        </form>
+        </div>
+        <div class="task sidebar">
+          <form id="make_components_checkbox">
+
+            <select name="Components">
+                <option value="Camera">Camera</option>
+                <option value="Motor">Motor</option>
+                <option value="Water Proof">Water Proof</option>
+            </select>
+            
+            <input type="submit" />
+            
+          </form>
+        </div>
+        <div class="task sidebar">
+          <p> Contact </p>
+        </div>
+        <div class="task licence"> 
+          <div >
+            <h1>A DRONE LICENCE IS REQUIRED TO MAKE PURCHASES FROM FLEXDRONE</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main body -->
+    <div class="week">
+      <div class="secondary-background">
+        <div class="task main">
+          <nav class="container">
+            <ul>
+              <a href="{{ url_for('checkout_form') }}"> Check out</a>
+              <li>0 Item / £0.00</li>
+              {% if current_user.is_authenticated %}
+                <li>Hi {{ fname }} {{ lname }}!</li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+        <div class="task main">
+          <div class="container">
+            <h1> --------------- NEW DEALS --------------- </h1>
+          </div>
+        </div>
+        <div class="task main"> <!-- need to copy task.main and increase the size-->
+          <div class="container supporting">
+            <img src="../static/img/logo.png"  class="center"/>
+          </div>
+        </div>
+        <div class="task main"> <!-- need to copy task.main and reduce the size-->
+          <h1>Watch how we work</h1>
+        </div>
+        <div class="task video">
+
+          <iframe width="840" height="472.5" autoplay src="https://www.youtube.com/embed/UBRX3QoiybY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+      
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  
+<!-- Footer -->
+
+  <footer>
+
+      <div class="week">
+        <div class="row">
+          <div class="mapsquare">
+            <div class="container location">
+              <!--<iframe class="myMap" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9933.55902618792!2d-0.0847224!3d51.5060651!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xda57b6eff5dac0d9!2sFDM%20Group!5e0!3m2!1sen!2suk!4v1666245511336!5m2!1sen!2suk" width="450" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9933.55902618792!2d-0.0847224!3d51.5060651!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xda57b6eff5dac0d9!2sFDM%20Group!5e0!3m2!1sen!2suk!4v1666245511336!5m2!1sen!2suk" width="450" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <div class="body">
+            <div class="task footernavsquare">
+              <div class="container"> <!-- change class so the colour is different -->
+                <ul class="footernavlist">
+                        <a href="{{ url_for('flexdronehome') }}">
+                          <li>Home</li>
+                        </a>
+                        <li>About</li>
+                        <li>Features</li>
+                        <li>Pricing</li>
+                        <li>Contact us</li>
+                </ul>
+              </div>
+            </div>
+            <div class="task footernavsquare">
+              <div class="container"> <!-- change class so the colour is different -->
+                <ul class="footernavlist2">
+                        <li>Blog</li>
+                        <li>Search</li>
+                        <a href="{{ url_for('terms_and_conditions') }}">
+                          <li>T & Cs</li>
+                        </a> 
+                        <li>Privacy</li>
+                        <li>Community</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="task socialsquare">
+            <h1 class="newsletter">Get our newsletter</h1>
+            <input type="text" name="subscribe" id="subscribe">
+            <label for="subscribe">
+              <h3> Subscribe</h3>
+            </label>
+            <div class="container gallery">
+                <img src="../static/img/Facebook.png" />
+                <img src="../static/img/Insta.png" />
+                <img src="../static/img/Snapchat.png" />
+                <img src="../static/img/Twitter.png" />
+                <img src="../static/img/Youtube.png" />
+                <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+      <nav>
+        <ul>
+          <li>Item</li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+<!-- JavaScript parts -->
+<script type="text/javascript" src="../static/javaScript/check_box.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script>
+
+	$(function()
+	{
+		var mySelectCheckbox = new checkbox_select(
+		{
+			selector : "#make_products_checkbox",
+            selected_translation : "selected",
+            all_translation : "All Selected",
+            not_found : "Nici unul gasit",
+
+			// Event during initialization
+			onApply : function(e)
+			{
+                alert("Custom Event: " + e.selected);
+			}
+		});
+  
+	});
+		
+</script>
+
+<script>
+
+	$(function()
+	{
+		var mySelectCheckbox = new checkbox_select(
+		{
+			selector : "#make_custom_design_checkbox",
+            selected_translation : "selected",
+            all_translation : "All Selected",
+            not_found : "Nici unul gasit",
+
+			// Event during initialization
+			onApply : function(e)
+			{
+                alert("Custom Event: " + e.selected);
+			}
+		});
+  
+	});
+		
+</script>
+
+<script>
+
+	$(function()
+	{
+		var mySelectCheckbox = new checkbox_select(
+		{
+			selector : "#make_components_checkbox",
+            selected_translation : "selected",
+            all_translation : "All Selected",
+            not_found : "Nici unul gasit",
+
+			// Event during initialization
+			onApply : function(e)
+			{
+                alert("Custom Event: " + e.selected);
+			}
+		});
+  
+	});
+		
+</script>
+
+<script>
+  function redirect() {
+    var value = document.getElementById("Products").value;
+    window.location.href = value;
+    return ;
+  }
+
+</script>
+
+</body>
+
+</html>
